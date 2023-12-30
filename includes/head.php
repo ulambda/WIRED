@@ -1,5 +1,5 @@
 <?php
-	$conn = mysqli_connect('localhost', 'root', '', 'social') or die(mysqli_error());
+	$conn = mysqli_connect('localhost', 'root', '', 'mother') or die(mysqli_error());
 	if(!$conn)die("Error: Failed to connect to database");
 
 ?>
