@@ -1,6 +1,6 @@
 <div style="display:flex;">
     <a href="/mother/index.php" style="padding:10px;">home</a>
-    <a href="/mother/search.php" style="padding:10px;">search</a>
+    <a href="/mother/search.php?result=" style="padding:10px;">search</a>
 
 
     <a href="/mother/profile.php?user=<?php echo $_SESSION['user']?>" style="padding:10px;">users</a>

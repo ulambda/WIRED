@@ -16,6 +16,7 @@
     <title>Post</title>
 </head>
 <body>
+    <h1>Create Post</h1>
 
 <form method="POST">
     <div>

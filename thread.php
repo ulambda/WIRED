@@ -35,6 +35,57 @@
 </div>
 
 
+<?php  
+
+    $thisPostLikes = 0;
+
+    $query = mysqli_query($conn, "SELECT * FROM `likes` WHERE `postid` =  '$postID'") or die(mysqli_error());
+    $liked = false;
+
+    while($fetch = mysqli_fetch_array($query)){
+        $thisPostLikes++;
+        if($fetch['user'] == $_SESSION['user']){
+            $liked = true;
+        }
+    }
+?>
+
+<?php
+
+    if ($liked) { ?>
+        <form method="POST">
+            <button type="submit" name="unlike-btn">Unlike <?php echo $thisPostLikes ?></button>
+        </form>
+<?php 
+    } 
+    else{
+?>
+        <form method="POST">
+            <button type="submit" name="like-btn">Like <?php echo $thisPostLikes ?></button>
+        </form>
+<?php 
+    } 
+?>
+
+
+
+<?php 
+    if (isset($_POST['like-btn'])){
+        $user = $_SESSION['user'];
+        $insertQuery = mysqli_query($conn, "INSERT INTO `likes` VALUES('', '$user', '$postID', 'post')") or die(mysqli_error());
+        header("Location: thread.php?id=" . $postID);
+    }
+
+    if (isset($_POST['unlike-btn'])){
+        $user = $_SESSION['user'];
+        $deleteQuery = mysqli_query($conn, "DELETE FROM `likes` WHERE `user` = '$user' AND `postid` = '$postID'") or die(mysqli_error());
+        header("Location: thread.php?id=" . $postID);
+
+    }
+  
+        
+?>
+
 <p>Reply to post:</p>
 
 <form method="POST">

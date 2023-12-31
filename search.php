@@ -18,7 +18,7 @@
 </head>
 <body>
     <form method="GET">
-        <input type="text" name="searchbar">
+        <input type="text" name="searchbar" value="<?php echo $_GET['result']?>">
         <button name="querySearch">Search</button>
     </form>
 
@@ -31,15 +31,14 @@
     <p>Results for: "<?php echo $_GET['result'] ?>"</p>
 
     <?php
-        $query = mysqli_query($conn, "SELECT * FROM `posts` WHERE `title` = '" . $_GET['result'] . "'") or die(mysqli_error());
+        $searchTerm = $_GET['result'];
+        $query = mysqli_query($conn, "SELECT * FROM `posts` WHERE `body` LIKE '%" . $searchTerm . "%'") or die(mysqli_error());
         while($fetch = mysqli_fetch_array($query)){
     ?>
    
     <div style="background-color:gray;">
         <div>
             <img src="images/profile-icons/default.png" alt="" style="width:50px; border-radius:100px;">
-
-
             <a href="profile.php?user=<?php echo $fetch['user']?>">by <?php echo $fetch['user']?></a> at <?php echo $fetch['date']?>
 
         </div>
