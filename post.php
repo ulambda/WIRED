@@ -31,8 +31,8 @@
 <?php
     $username = $_SESSION['user'];
     if (isset($_POST['post'])) {
-        $title = filter_input(INPUT_POST, $_POST['title'], FILTER_SANITIZE_SPECIAL_CHARS);
-        $body = filter_input(INPUT_POST, $_POST['body'], FILTER_SANITIZE_SPECIAL_CHARS);
+        $title = filter_input(INPUT_POST, $_POST['title']);
+        $body = filter_input(INPUT_POST, $_POST['body']);
         mysqli_query($conn, "INSERT INTO `posts` VALUES('', '$title', '$body', '$username', UTC_TIMESTAMP())") or die(mysqli_error());
     }
 ?>

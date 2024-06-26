@@ -1,6 +1,6 @@
 <?php 
-	$conn = mysqli_connect('localhost', 'root', '', 'social') or die(mysqli_error());
-	if(!$conn)die("Error: Failed to connect to database");
+    session_start();
+    include '../includes/head.php';
 ?>
 
 <!DOCTYPE html>
